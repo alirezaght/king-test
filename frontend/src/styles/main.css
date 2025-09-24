@@ -406,6 +406,16 @@ button:focus {
   color: #0c5460;
 }
 
+.status-canceled {
+  background-color: #f2f8d7;
+  color: #721c24;
+}
+
+.status-error {
+  background-color: #f5c6cb;
+  color: #721c24;
+}
+
 .status-on-hold {
   background-color: #f8d7da;
   color: #721c24;

@@ -4,7 +4,7 @@ export interface DataItem {
   status: string;
   description: string;
   delta: number;
-  createdOn: string;
+  createdOn: string | null;
 }
 
 export interface ApiResponse {

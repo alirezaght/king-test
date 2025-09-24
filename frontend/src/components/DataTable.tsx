@@ -8,7 +8,7 @@ export interface DataItem {
   status: string;
   description: string;
   delta: number;
-  createdOn: string;
+  createdOn: string | null;
 }
 
 const DataTable: React.FC = () => {
@@ -43,13 +43,8 @@ const DataTable: React.FC = () => {
   // Fetch data using React Query
   const { data: apiResponse, isLoading, error, isError } = useTableData(apiParams);
 
-  // Get unique status values for filter dropdown
-  const statusOptions = useMemo(() => {
-    if (!apiResponse?.data) return [];
-    const statusSet = new Set(apiResponse.data.map((item: DataItem) => item.status));
-    const statuses = Array.from(statusSet) as string[];
-    return statuses.sort();
-  }, [apiResponse?.data]);
+  // Static list of all possible status values
+  const statusOptions = ['COMPLETED', 'CANCELED', 'ERROR'];
 
   // Handle sorting
   const handleSort = (field: 'id' | 'name' | 'createdOn') => {
@@ -74,14 +69,27 @@ const DataTable: React.FC = () => {
   };
 
   // Format date for display
-  const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'short',
-      day: '2-digit',
-      hour: '2-digit',
-      minute: '2-digit'
-    });
+  const formatDate = (dateString: string | null) => {
+    if (!dateString) {
+      return 'N/A';
+    }
+    try {
+      const date = new Date(dateString);
+      // Check if the date is valid
+      if (isNaN(date.getTime())) {
+        return 'N/A';
+      }
+      
+      return date.toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'short',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit'
+      });
+    } catch (error) {
+      return 'N/A';
+    }
   };
 
   // Generate page numbers for pagination
