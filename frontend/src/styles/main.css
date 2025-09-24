@@ -356,6 +356,7 @@ button:focus {
   position: sticky;
   top: 0;
   z-index: 10;
+  white-space: nowrap;
 }
 
 .data-table-grid th.sortable {
@@ -542,5 +543,7 @@ button:focus {
   .data-table-grid td {
     padding: var(--spacing-xs) var(--spacing-sm);
     font-size: 0.9rem;
+    white-space: nowrap;
   }
+
 }
