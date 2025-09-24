@@ -30,13 +30,8 @@ FRONTEND_URL=http://localhost:3000
 Make sure both the frontend and backend applications are running:
 
 ```bash
-# Terminal 1: Start backend
-cd ../backend
-./gradlew bootRun
-
-# Terminal 2: Start frontend  
-cd ../frontend
-npm start
+cd ../
+docker compose up --build
 ```
 
 ### Run Tests
