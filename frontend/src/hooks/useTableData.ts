@@ -9,8 +9,3 @@ export const useTableData = (params: ApiParams) => {
     staleTime: 30000, // Consider data fresh for 30 seconds
   });
 };
-
-export const useTableDataMutation = () => {
-  // This can be extended for mutations like create/update/delete if needed
-  return null;
-};
