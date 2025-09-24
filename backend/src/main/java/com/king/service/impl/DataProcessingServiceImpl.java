@@ -105,24 +105,21 @@ public class DataProcessingServiceImpl implements DataProcessingService {
         switch (sortBy.toLowerCase()) {
             case "name":
                 Comparator<DataItem> nameComparator = Comparator.comparing(DataItem::getName, 
-                        isDescending ? Comparator.nullsFirst(String.CASE_INSENSITIVE_ORDER.reversed()) 
-                                     : Comparator.nullsLast(String.CASE_INSENSITIVE_ORDER));
+                        isDescending ? Comparator.nullsLast(String.CASE_INSENSITIVE_ORDER.reversed()) 
+                                     : Comparator.nullsFirst(String.CASE_INSENSITIVE_ORDER));
                 return nameComparator;
                 
             case "createdon":
-            case "created_on":
-                // For descending: latest dates first, nulls last
-                // For ascending: earliest dates first, nulls last
                 Comparator<DataItem> dateComparator = Comparator.comparing(DataItem::getCreatedOn,
                         isDescending ? Comparator.nullsLast(Comparator.<LocalDateTime>naturalOrder().reversed())
-                                     : Comparator.nullsLast(Comparator.naturalOrder()));
+                                     : Comparator.nullsFirst(Comparator.naturalOrder()));
                 return dateComparator;
                 
             case "id":
             default:
                 Comparator<DataItem> idComparator = Comparator.comparing(DataItem::getId, 
                         isDescending ? Comparator.nullsLast(Comparator.<Long>naturalOrder().reversed())
-                                     : Comparator.nullsLast(Comparator.naturalOrder()));
+                                     : Comparator.nullsFirst(Comparator.naturalOrder()));
                 return idComparator;
         }
     }

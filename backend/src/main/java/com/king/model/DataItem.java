@@ -13,7 +13,6 @@ public class DataItem {
     private String status;
     private String description;
     
-    @JsonDeserialize(using = DeltaDeserializer.class)
     private Double delta;
     
     @JsonProperty("createdOn")
