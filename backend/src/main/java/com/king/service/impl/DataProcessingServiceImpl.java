@@ -55,7 +55,7 @@ public class DataProcessingServiceImpl implements DataProcessingService {
         long totalCount = sortedData.size();
         int totalPages = (int) Math.ceil((double) totalCount / size);
         if (totalPages == 0) {
-            return new DataResponse(List.of(), 0L, 1, 0, false, false);
+            return new DataResponse(List.of(), 0L, 1, 1, false, false);
         }
         if (page > totalPages) {
             page = totalPages;
