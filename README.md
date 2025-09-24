@@ -19,9 +19,12 @@ Retrieve data from Google Cloud Storage (GCS) and display it in a table with the
 
 ## Architecture
 
-- **Frontend**: React.js with TypeScript and CSS styling
-- **Backend**: Spring Boot with data processing and GCS integration
+- **[Frontend](./frontend/README.md)**: React.js with TypeScript and CSS styling
+- **[Backend](./backend/README.md)**: Spring Boot with data processing and GCS integration
+- **[E2E Tests](./e2e/README.md)**: Playwright end-to-end testing suite
 - All filtering, pagination, and data manipulation handled by backend
+
+📖 **For detailed setup instructions, API documentation, and configuration options, click the links above to view individual component README files.**
 
 ## Quick Start
 
@@ -67,6 +70,8 @@ Backend configuration is in `backend/src/main/resources/application.properties`:
 
 - `GET /api/data` - Get paginated data with optional filtering and sorting
 - `GET /api/health` - Health check
+
+
 
 ## Testing Strategy
 
