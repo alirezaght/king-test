@@ -57,7 +57,7 @@ A Spring Boot backend application with Gradle, providing RESTful APIs.
     }
   ],
   "totalCount": 500,
-  "currentPage": 0,
+  "currentPage": 1,
   "totalPages": 25,
   "hasNext": true,
   "hasPrevious": false

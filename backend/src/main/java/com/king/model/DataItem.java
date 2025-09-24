@@ -1,6 +1,6 @@
 package com.king.model;
 
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -18,13 +18,13 @@ public class DataItem {
     @JsonProperty("createdOn")
     @JsonDeserialize(using = CreatedOnDeserializer.class)
     @JsonSerialize(using = CreatedOnSerializer.class)
-    private LocalDateTime createdOn;
+    private OffsetDateTime createdOn;
     
     // Default constructor
     public DataItem() {}
     
     // Constructor with parameters
-    public DataItem(Long id, String name, String status, String description, Double delta, LocalDateTime createdOn) {
+    public DataItem(Long id, String name, String status, String description, Double delta, OffsetDateTime createdOn) {
         this.id = id;
         this.name = name;
         this.status = status;
@@ -74,11 +74,11 @@ public class DataItem {
         this.delta = delta;
     }
     
-    public LocalDateTime getCreatedOn() {
+    public OffsetDateTime getCreatedOn() {
         return createdOn;
     }
     
-    public void setCreatedOn(LocalDateTime createdOn) {
+    public void setCreatedOn(OffsetDateTime createdOn) {
         this.createdOn = createdOn;
     }
     

@@ -1,6 +1,6 @@
 package com.king.service.impl;
 
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -54,6 +54,12 @@ public class DataProcessingServiceImpl implements DataProcessingService {
         // Calculate pagination
         long totalCount = sortedData.size();
         int totalPages = (int) Math.ceil((double) totalCount / size);
+        if (totalPages == 0) {
+            return new DataResponse(List.of(), 0L, 1, 0, false, false);
+        }
+        if (page > totalPages) {
+            page = totalPages;
+        }
         int startIndex = (page - 1) * size;
         int endIndex = Math.min(startIndex + size, sortedData.size());
         
@@ -110,9 +116,9 @@ public class DataProcessingServiceImpl implements DataProcessingService {
                 return nameComparator;
                 
             case "createdon":
-                Comparator<DataItem> dateComparator = Comparator.comparing(DataItem::getCreatedOn,
-                        isDescending ? Comparator.nullsLast(Comparator.<LocalDateTime>naturalOrder().reversed())
-                                     : Comparator.nullsFirst(Comparator.naturalOrder()));
+        Comparator<DataItem> dateComparator = Comparator.comparing(DataItem::getCreatedOn,
+            isDescending ? Comparator.nullsLast(Comparator.<OffsetDateTime>naturalOrder().reversed())
+                     : Comparator.nullsFirst(Comparator.naturalOrder()));
                 return dateComparator;
                 
             case "id":

@@ -3,7 +3,8 @@ package com.king.model;
 import java.io.IOException;
 import java.time.Instant;
 import java.time.LocalDateTime;
-import java.time.ZoneId;
+import java.time.OffsetDateTime;
+import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
@@ -19,10 +20,10 @@ import com.fasterxml.jackson.databind.JsonNode;
  * - Empty string
  * - null
  */
-public class CreatedOnDeserializer extends JsonDeserializer<LocalDateTime> {
+public class CreatedOnDeserializer extends JsonDeserializer<OffsetDateTime> {
     
     @Override
-    public LocalDateTime deserialize(JsonParser p, DeserializationContext ctxt) throws IOException {
+    public OffsetDateTime deserialize(JsonParser p, DeserializationContext ctxt) throws IOException {
         JsonNode node = p.getCodec().readTree(p);
         
         if (node.isNull() || node.asText().trim().isEmpty()) {
@@ -35,7 +36,7 @@ public class CreatedOnDeserializer extends JsonDeserializer<LocalDateTime> {
             if (timestamp == 0) {
                 return null;
             }
-            return LocalDateTime.ofInstant(Instant.ofEpochMilli(timestamp), ZoneId.systemDefault());
+            return OffsetDateTime.ofInstant(Instant.ofEpochMilli(timestamp), ZoneOffset.UTC);
         }
         
         if (node.isTextual()) {
@@ -46,7 +47,14 @@ public class CreatedOnDeserializer extends JsonDeserializer<LocalDateTime> {
             
             try {
                 // Try parsing as ISO string
-                return LocalDateTime.parse(dateStr, DateTimeFormatter.ISO_DATE_TIME);
+                // Prefer parsing as OffsetDateTime if zone present
+                try {
+                    return OffsetDateTime.parse(dateStr, DateTimeFormatter.ISO_DATE_TIME).withOffsetSameInstant(ZoneOffset.UTC);
+                } catch (DateTimeParseException inner) {
+                    // Fallback: treat as local date-time without zone and assume UTC
+                    LocalDateTime ldt = LocalDateTime.parse(dateStr, DateTimeFormatter.ISO_DATE_TIME);
+                    return ldt.atOffset(ZoneOffset.UTC);
+                }
             } catch (DateTimeParseException e) {
                 // Try parsing as Unix timestamp in string format
                 try {
@@ -54,7 +62,7 @@ public class CreatedOnDeserializer extends JsonDeserializer<LocalDateTime> {
                     if (timestamp == 0) {
                         return null;
                     }
-                    return LocalDateTime.ofInstant(Instant.ofEpochMilli(timestamp), ZoneId.systemDefault());
+                    return OffsetDateTime.ofInstant(Instant.ofEpochMilli(timestamp), ZoneOffset.UTC);
                 } catch (NumberFormatException ex) {
                     // If all parsing fails, return null
                     return null;

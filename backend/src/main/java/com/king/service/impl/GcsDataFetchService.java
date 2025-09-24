@@ -35,7 +35,8 @@ public class GcsDataFetchService implements DataFetchService {
     }
     
     @Override
-    @Cacheable(value = "gcs-data", key = "'all-data'")
+    // Cache successful non-empty fetches only; avoid poisoning cache with transient empty responses
+    @Cacheable(value = "gcs-data", key = "'all-data'", unless = "#result == null || #result.isEmpty()")
     public List<DataItem> fetchAllData() {
         try {
             logger.info("Fetching data from GCS: {}", gcsProperties.getUrl());

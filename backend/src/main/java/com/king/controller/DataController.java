@@ -56,7 +56,7 @@ public class DataController {
         
         try {
             // Validate parameters
-            if (page < 0) {
+            if (page <= 0) {
                 logger.warn("Invalid page parameter: {}", page);
                 return ResponseEntity.badRequest().build();
             }
