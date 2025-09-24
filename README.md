@@ -40,6 +40,7 @@ docker-compose up --build
 **Backend:**
 ```bash
 cd backend
+gradle wrapper --gradle-version 8.4
 ./gradlew bootRun
 ```
 
