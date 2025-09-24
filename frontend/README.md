@@ -1,14 +1,6 @@
 # King Frontend
 
-A React.js frontend application with CSS styling, built without any UI frameworks.
-
-## Features
-
-- React 18 with React Router
-- CSS with custom properties (CSS variables)
-- Custom components without UI frameworks
-- Responsive design
-- Clean and modern UI
+A React.js frontend application with TypeScript and CSS styling, built without any UI frameworks.
 
 ## Getting Started
 
@@ -42,4 +34,40 @@ A React.js frontend application with CSS styling, built without any UI framework
 - `npm build` - Builds the app for production
 - `npm test` - Launches the test runner
 - `npm eject` - Ejects from Create React App (one-way operation)
+
+## Project Structure
+
+```
+frontend/
+├── public/
+│   └── index.html
+├── src/
+│   ├── components/
+│   │   ├── Header.tsx
+│   │   ├── Home.tsx
+│   │   └── About.tsx
+│   ├── styles/
+│   │   └── main.css
+│   ├── App.tsx
+│   ├── index.tsx
+│   └── react-app-env.d.ts
+├── tsconfig.json
+└── package.json
+```
+
+## Styling
+
+The application uses CSS with:
+- CSS custom properties (variables) for colors, spacing, and breakpoints
+- Responsive design patterns
+- Clean and modern aesthetic
+- No external UI frameworks
+
+## TypeScript
+
+The project is built with TypeScript for:
+- Type safety and better development experience
+- Enhanced IDE support with autocompletion
+- Better refactoring capabilities
+- Compile-time error detection
 

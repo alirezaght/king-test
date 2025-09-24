@@ -1,13 +1,13 @@
 import React from 'react';
 
-const Home = () => {
+const Home: React.FC = () => {
   return (
     <div className="home">
       <div className="container">
         <section className="hero">
           <h2 className="hero-title">Welcome to King</h2>
           <p className="hero-description">
-            A React application with LESS styling and Spring Boot backend
+            A React application with CSS styling and Spring Boot backend
           </p>
           <button className="hero-button">Get Started</button>
         </section>
@@ -20,8 +20,8 @@ const Home = () => {
               <p>Modern React.js application with routing</p>
             </div>
             <div className="feature-card">
-              <h4>LESS Styling</h4>
-              <p>Custom styling with LESS preprocessor</p>
+              <h4>CSS Styling</h4>
+              <p>Custom styling with CSS custom properties</p>
             </div>
             <div className="feature-card">
               <h4>Spring Boot Backend</h4>

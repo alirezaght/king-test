@@ -1,11 +1,12 @@
 # Project Instructions
 
 This workspace contains:
-- Frontend: React.js application with CSS styling (no UI frameworks)
+- Frontend: React.js application with TypeScript and CSS styling (no UI frameworks)
 - Backend: Java Spring Boot application with Gradle
 
-## Frontend (React + CSS)
+## Frontend (React + TypeScript + CSS)
 - Located in `frontend/` directory
+- Uses TypeScript for type safety
 - Uses CSS with custom properties instead of preprocessors
 - No UI frameworks (Ant Design, Material UI, Bootstrap, etc.)
 - Clean, custom styling approach
@@ -19,7 +20,7 @@ This workspace contains:
 ## Progress Tracking
 - [x] Create directory structure
 - [x] Create copilot instructions
-- [x] Set up React frontend with CSS
+- [x] Set up React frontend with TypeScript and CSS
 - [x] Set up Spring Boot backend with Gradle
 - [x] Configure build systems
 - [x] Create documentation

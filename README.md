@@ -19,7 +19,7 @@ Retrieve data from Google Cloud Storage (GCS) and display it in a table with the
 
 ## Architecture
 
-- **Frontend**: React.js with CSS styling
+- **Frontend**: React.js with TypeScript and CSS styling
 - **Backend**: Spring Boot with data processing and GCS integration
 - All filtering, pagination, and data manipulation handled by backend
 

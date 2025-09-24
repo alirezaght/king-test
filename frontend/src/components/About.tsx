@@ -1,6 +1,6 @@
 import React from 'react';
 
-const About = () => {
+const About: React.FC = () => {
   return (
     <div className="about">
       <div className="container">
@@ -10,7 +10,7 @@ const About = () => {
             King is a full-stack application built with modern technologies:
           </p>
           <ul className="tech-list">
-            <li>Frontend: React.js with LESS styling</li>
+            <li>Frontend: React.js with CSS styling</li>
             <li>Backend: Java Spring Boot with Gradle</li>
             <li>Clean architecture and custom design</li>
           </ul>
