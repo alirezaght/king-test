@@ -34,7 +34,7 @@ public class DataController {
     /**
      * Get data with optional filtering, sorting, and pagination
      * 
-     * @param page The page number (default: 0)
+     * @param page The page number (default: 1)
      * @param size The page size (default: 20)
      * @param search Free text search by name
      * @param status Filter by status value
@@ -44,7 +44,7 @@ public class DataController {
      */
     @GetMapping("/data")
     public ResponseEntity<DataResponse> getData(
-            @RequestParam(defaultValue = "0") Integer page,
+            @RequestParam(defaultValue = "1") Integer page,
             @RequestParam(defaultValue = "20") Integer size,
             @RequestParam(required = false) String search,
             @RequestParam(required = false) String status,

@@ -36,7 +36,7 @@ A Spring Boot backend application with Gradle, providing RESTful APIs.
 #### Parameters
 | Parameter | Type | Default | Description |
 |-----------|------|---------|-------------|
-| `page` | Integer | 0 | Page number (0-based) |
+| `page` | Integer | 1 | Page number (1-based) |
 | `size` | Integer | 20 | Number of items per page (max 100) |
 | `search` | String | - | Free text search by name |
 | `status` | String | - | Filter by status (COMPLETED, CANCELED, ERROR) |

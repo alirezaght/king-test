@@ -88,7 +88,7 @@ public class DataProcessingServiceImpl implements DataProcessingService {
         if (!StringUtils.hasText(status)) {
             return true;
         }
-        return status.equals(item.getStatus());
+        return status.equalsIgnoreCase(item.getStatus());
     }
     
     private List<DataItem> sortData(List<DataItem> data, String sortBy, String sortOrder) {
