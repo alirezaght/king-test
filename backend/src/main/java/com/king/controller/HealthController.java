@@ -1,6 +1,5 @@
 package com.king.controller;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.http.ResponseEntity;
@@ -23,17 +22,8 @@ public class HealthController {
     }
 
     @GetMapping("/health")
-    public ResponseEntity<Map<String, Object>> health() {
-        Map<String, Object> response = new HashMap<>();
-        response.put("status", "UP");
-        response.put("message", "King Backend is running");
-        response.put("timestamp", System.currentTimeMillis());
-        response.put("version", "1.0.0");
-        return ResponseEntity.ok(response);
-    }
-
-    @GetMapping("/info")
-    public ResponseEntity<Map<String, String>> info() {
+    public ResponseEntity<Map<String, String>> health() {
         return ResponseEntity.ok(healthService.getApplicationInfo());
     }
+    
 }
